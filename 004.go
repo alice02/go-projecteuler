@@ -2,17 +2,14 @@ package main
 
 import "fmt"
 import "strconv"
-import "strings"
 
-func isPalindrome(num int) (isP bool) {
+func isPalindrome(num int) bool {
 	s := strconv.Itoa(num)
-	a := strings.Split(s, "")
-	L := len(a)
-	for i := 0; i < L/2; i++ {
-		a[i], a[L-i-1] = a[L-i-1], a[i]
+	runes := []rune(s)
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
 	}
-	x := strings.Join(a, "")
-	y, _ := strconv.Atoi(x)
+	y, _ := strconv.Atoi(string(runes))
 	if num == y {
 		return true
 	}
