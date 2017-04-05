@@ -1,47 +1,47 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-func sieve() chan int {
-	out := make(chan int)
-	go func() {
-		ch := generate()
-		for {
-			prime := <-ch
-			out <- prime
-			ch = filter(ch, prime)
+const max = 10001
+
+func IsPrime(number int) bool {
+	if number < 0 {
+		return false
+	}
+	if number == 0 || number == 1 {
+		return false
+	}
+	if number == 2 {
+		return true
+	}
+	if number%2 == 0 {
+		return false
+	}
+	for i := 3; i <= int(math.Sqrt(float64(number))); i += 2 {
+		if number%i == 0 {
+			return false
 		}
-	}()
-	return out
+	}
+	return true
 }
 
-func filter(in chan int, prime int) chan int {
-	out := make(chan int)
-	go func() {
-		for {
-			if i := <-in; i%prime != 0 {
-				out <- i
+func Problem007() int {
+	num, count := 0, 0
+	for {
+		if IsPrime(num) {
+			count += 1
+			if count == max {
+				break
 			}
 		}
-	}()
-	return out
-}
-
-func generate() chan int {
-	ch := make(chan int)
-	go func() {
-		for i := 2; ; i++ {
-			ch <- i
-		}
-	}()
-	return ch
+		num++
+	}
+	return num
 }
 
 func main() {
-	primes := sieve()
-	var num int
-	for i := 0; i < 10001; i++ { // 最初の100個の素数を表示
-		num = <-primes
-	}
-	fmt.Println(num)
+	fmt.Println(Problem007())
 }
