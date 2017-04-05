@@ -27,9 +27,12 @@ var strNumber = `73167176531330624919225119674426574742355349194934
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450`
 
-func main() {
-	tmp := strings.Split(strNumber, "\n")
-	target := strings.Join(tmp, "")
+func ParseText(text string) string {
+	return strings.Join(strings.Split(text, "\n"), "")
+}
+
+func Problem008() int {
+	target := ParseText(strNumber)
 	largest := 0
 	offset := 13
 	for i := 0; i+offset <= len(target); i++ {
@@ -42,5 +45,9 @@ func main() {
 			largest = mul
 		}
 	}
-	fmt.Println(largest)
+	return largest
+}
+
+func main() {
+	fmt.Println(Problem008())
 }
