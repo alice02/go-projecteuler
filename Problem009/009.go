@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func Problem009() int {
 	n := 1000
 	largest := 0
 	for a := 0; a < n/2; a++ {
@@ -14,5 +14,9 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(largest)
+	return largest
+}
+
+func main() {
+	fmt.Println(Problem009())
 }
