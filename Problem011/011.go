@@ -36,7 +36,7 @@ func ParseMatrix(strMatrix string, x int, y int) [][]int {
 	for i := range matrix {
 		matrix[i] = make([]int, x)
 	}
-	target_row := strings.Split(targetMatrix, "\n")
+	target_row := strings.Split(strMatrix, "\n")
 	for i := 0; i < y; i++ {
 		target_col := strings.Split(target_row[i], " ")
 		for j := 0; j < x; j++ {
@@ -55,7 +55,7 @@ func PrintMatrix(matrix [][]int) {
 	}
 }
 
-func main() {
+func Problem011() int {
 	matrix := ParseMatrix(targetMatrix, 20, 20)
 	max := 0
 	// 左右
@@ -95,7 +95,9 @@ func main() {
 			}
 		}
 	}
+	return max
+}
 
-	fmt.Println(max)
-
+func main() {
+	fmt.Println(Problem011())
 }
