@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/big"
+	"strconv"
 	"strings"
 )
 
@@ -107,12 +108,17 @@ var targetString = `37107287533902102798797998220837590246510135740250
 20849603980134001723930671666823555245252804609722
 53503534226472524250874054075591789781264330331690`
 
-func main() {
+func Problem013() int {
 	targets := strings.Split(targetString, "\n")
 	sum := new(big.Int).SetInt64(0)
 	for _, target := range targets {
 		num, _ := new(big.Int).SetString(target, 0)
 		sum.Add(sum, num)
 	}
-	fmt.Println(sum.String()[:10])
+	result, _ := strconv.Atoi(sum.String()[:10])
+	return result
+}
+
+func main() {
+	fmt.Println(Problem013())
 }
