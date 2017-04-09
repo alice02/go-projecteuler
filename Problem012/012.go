@@ -28,13 +28,18 @@ func CalcDivisorLength(n int) int {
 	return result
 
 }
-func main() {
+
+func Problem012() int {
 	for n := 0; n < 100000000; n++ {
 		x := GenerateTriangularNumber(n)
 		num := CalcDivisorLength(x)
 		if num > 500 {
-			fmt.Println(x)
-			break
+			return x
 		}
 	}
+	return -1
+}
+
+func main() {
+	fmt.Println(Problem012())
 }
