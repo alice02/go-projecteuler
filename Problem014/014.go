@@ -15,7 +15,7 @@ func MakeSequence(num int) []int {
 	return sequence
 }
 
-func main() {
+func Problem014() int {
 	max := 1000000
 	longest := map[string]int{
 		"length": 0,
@@ -28,5 +28,9 @@ func main() {
 			longest["value"] = n
 		}
 	}
-	fmt.Printf("start value: %d, length: %d\n", longest["value"], longest["length"])
+	return longest["value"]
+}
+
+func main() {
+	fmt.Println(Problem014())
 }
