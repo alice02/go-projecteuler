@@ -39,20 +39,24 @@ func Max(x, y int) int {
 	}
 }
 
-func main() {
+func Problem018() int {
 	rows := strings.Split(targetTriangle, "\n")
 	rowLength := len(rows)
 	lower := StringToIntArray(strings.Split(rows[rowLength-1], " "))
 	for i := rowLength - 2; i >= 0; i-- {
 		upper := StringToIntArray(strings.Split(rows[i], " "))
-		calclated_values := []int{}
+		calclatedValues := []int{}
 		for j := 0; j < len(upper); j++ {
 			center := upper[j]
 			left := lower[j]
 			right := lower[j+1]
-			calclated_values = append(calclated_values, center+Max(left, right))
+			calclatedValues = append(calclatedValues, center+Max(left, right))
 		}
-		lower = calclated_values
+		lower = calclatedValues
 	}
-	fmt.Println(lower[0])
+	return lower[0]
+}
+
+func main() {
+	fmt.Println(Problem018())
 }
