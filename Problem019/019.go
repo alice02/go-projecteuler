@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main() {
+func Problem019() int {
 	count := 0
 	for year := 1901; year <= 2000; year++ {
 		for month := 1; month <= 12; month++ {
@@ -15,5 +15,9 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(count)
+	return count
+}
+
+func main() {
+	fmt.Println(Problem019())
 }
