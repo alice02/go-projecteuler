@@ -51,10 +51,14 @@ func CalcNumberLength(num int) int {
 	return length[num/100] + len("hundred") + len("and") + CalcNumberLength(num%100)
 }
 
-func main() {
+func Problem017() int {
 	sum := 0
 	for i := 1; i <= 999; i++ {
 		sum += CalcNumberLength(i)
 	}
-	fmt.Println(sum + len("onethousand"))
+	return sum + len("onethousand")
+}
+
+func main() {
+	fmt.Println(Problem017())
 }
