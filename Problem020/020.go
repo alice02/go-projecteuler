@@ -15,7 +15,11 @@ func DigitSum(strNumber string) int {
 	return sum
 }
 
-func main() {
+func Problem020() int {
 	num := new(big.Int).MulRange(1, 100).String()
-	fmt.Println(DigitSum(num))
+	return DigitSum(num)
+}
+
+func main() {
+	fmt.Println(Problem020())
 }
