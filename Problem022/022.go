@@ -37,19 +37,22 @@ func SortStringArray(array []string) []string {
 
 func CalcScore(word string, rank int) int {
 	score := 0
-	length := len(word)
-	for _, c := range word[1 : length-1] {
+	for _, c := range word {
 		score += int(c - 'A' + 1)
 	}
 	return score * rank
 }
 
-func main() {
+func Problem022() int {
 	data := ParseText(LoadData("names.txt"))
 	sortedWords := SortStringArray(data)
 	sum := 0
 	for i, word := range sortedWords {
-		sum += CalcScore(word, i+1)
+		sum += CalcScore(strings.Replace(word, "\"", "", -1), i+1)
 	}
-	fmt.Println(sum)
+	return sum
+}
+
+func main() {
+	fmt.Println(Problem022())
 }
