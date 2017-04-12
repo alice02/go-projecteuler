@@ -20,7 +20,7 @@ func CalcArraySum(array []int) int {
 	return sum
 }
 
-func main() {
+func Problem021() int {
 	sum := 0
 	max := 10000
 	for i := 1; i < max; i++ {
@@ -29,5 +29,9 @@ func main() {
 			sum += i + x
 		}
 	}
-	fmt.Println(sum)
+	return sum
+}
+
+func main() {
+	fmt.Println(Problem021())
 }
