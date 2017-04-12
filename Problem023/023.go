@@ -31,7 +31,7 @@ func CheckAbundantNumber(num int) bool {
 	return num < CalcArraySum(CalcActualDivisor(num))
 }
 
-func main() {
+func Problem023() int {
 	abundantNumbers := []int{}
 	answer := []int{0}
 	for i := 1; i <= max; i++ {
@@ -49,5 +49,9 @@ func main() {
 			answer[i+j] = 0
 		}
 	}
-	fmt.Println(CalcArraySum(answer))
+	return CalcArraySum(answer)
+}
+
+func main() {
+	fmt.Println(Problem023())
 }
