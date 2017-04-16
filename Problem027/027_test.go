@@ -9,3 +9,12 @@ func TestProblem027(t *testing.T) {
 		t.Errorf("got %v want %v", actual, expected)
 	}
 }
+
+func TestIsPrime(t *testing.T) {
+	primes := EratosthenesSieve(100)
+	actual := IsPrime(53, primes)
+	expected := true
+	if actual != expected {
+		t.Errorf("got %v want %v", actual, expected)
+	}
+}
