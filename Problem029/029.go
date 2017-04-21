@@ -2,14 +2,16 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"math/big"
 )
 
 func Problem029() int {
-	m := make(map[int]bool)
+	m := make(map[interface{}]bool)
 	for a := 2; a <= 100; a++ {
 		for b := 2; b <= 100; b++ {
-			m[int(math.Pow(float64(a), float64(b)))] = true
+			i, e := big.NewInt(int64(a)), big.NewInt(int64(b))
+			i.Exp(i, e, nil)
+			m[i] = true
 		}
 	}
 	return len(m)
