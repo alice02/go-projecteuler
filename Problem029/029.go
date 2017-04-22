@@ -6,12 +6,12 @@ import (
 )
 
 func Problem029() int {
-	m := make(map[interface{}]bool)
+	m := make(map[string]bool)
 	for a := 2; a <= 100; a++ {
 		for b := 2; b <= 100; b++ {
-			i, e := big.NewInt(int64(a)), big.NewInt(int64(b))
-			i.Exp(i, e, nil)
-			m[i] = true
+			bigA := big.NewInt(int64(a))
+			bigB := big.NewInt(int64(b))
+			m[bigA.Exp(bigA, bigB, nil).String()] = true
 		}
 	}
 	return len(m)
